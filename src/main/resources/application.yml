@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/korea_album_purchase_management
+    username: root
+    password: root1234!
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root1234!
