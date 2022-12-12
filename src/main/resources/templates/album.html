@@ -38,6 +38,8 @@
         <th scope="col">Price</th>
         <th scope="col">CreatedAt</th>
         <th scope="col">UpdatedAt</th>
+        <th scope="col">앨범 삭제</th>
+
     </tr>
     </thead>
     <tbody>
@@ -48,8 +50,17 @@
         <td th:text="${album.price}"></td>
         <td th:text="${album.createdAt}"></td>
         <td th:text="${album.updatedAt}"></td>
+        <td><button type="button" class="btn btn-danger"
+                    th:id="${album.albumId}" th:onclick="sendDelete(this.getAttribute('id'))">삭제</button></td>
     </tr>
     </tbody>
 </table>
+<script>
+    function sendDelete(id) {
+        fetch("http://localhost:8080/albums/" + id, {
+            method: 'DELETE'
+        }).then(data => location.href = data.url);
+    }
+</script>
 </body>
 </html>
