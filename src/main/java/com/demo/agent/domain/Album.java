@@ -8,14 +8,16 @@ public class Album {
     private final Celebrity celebrity;
     private final String albumName;
     private int price;
+    private String image;
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Album(UUID albumId,  Celebrity celebrity, String albumName, int price, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Album(UUID albumId, Celebrity celebrity, String albumName, int price, String image, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.albumId = albumId;
         this.celebrity = celebrity;
         this.albumName = albumName;
         this.price = price;
+        this.image = image;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -34,6 +36,10 @@ public class Album {
 
     public int getPrice() {
         return price;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public LocalDateTime getCreatedAt() {

@@ -8,10 +8,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AlbumService {
-    Album createAlbum(Celebrity celebrity, String albumName, int price);
+    Album createAlbum(Celebrity celebrity, String albumName, int price, String image);
 
     Optional<Album> findAlbumByAlbumId(UUID albumId);
 
     List<Album> findAllAlbums();
+
+    void deleteByAlbumId(UUID albumId);
 
 }

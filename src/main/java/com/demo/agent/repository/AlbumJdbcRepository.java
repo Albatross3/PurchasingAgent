@@ -25,6 +25,7 @@ public class AlbumJdbcRepository implements AlbumRepository {
         paramMap.put("celebrity", album.getCelebrity().toString());
         paramMap.put("albumName", album.getAlbumName());
         paramMap.put("price", album.getPrice());
+        paramMap.put("image", album.getImage());
         paramMap.put("createdAt", album.getCreatedAt());
         paramMap.put("updatedAt", album.getUpdatedAt());
         return paramMap;
@@ -35,20 +36,21 @@ public class AlbumJdbcRepository implements AlbumRepository {
         return new UUID(byteBuffer.getLong(), byteBuffer.getLong());
     }
 
-    private RowMapper<Album> rowMapper = ((rs, rowNum) -> {
+    private final RowMapper<Album> rowMapper = ((rs, rowNum) -> {
         UUID albumId = toUUID(rs.getBytes("album_id"));
         Celebrity celebrity = Celebrity.valueOf(rs.getString("celebrity"));
         String albumName = rs.getString("album_name");
         int price = rs.getInt("price");
+        String image = rs.getString("image");
         LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
         LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
-        return new Album(albumId, celebrity, albumName, price, createdAt, updatedAt);
+        return new Album(albumId, celebrity, albumName, price, image, createdAt, updatedAt);
     });
 
     @Override
     public Album insert(Album album) {
-        jdbcTemplate.update("INSERT INTO album(album_id, celebrity, album_name, price, created_at, updated_at) " +
-                "VALUES(UUID_TO_BIN(:albumId), :celebrity, :albumName, :price, :createdAt, :updatedAt)", toParamMap(album));
+        jdbcTemplate.update("INSERT INTO album(album_id, celebrity, album_name, price, image, created_at, updated_at) " +
+                "VALUES(UUID_TO_BIN(:albumId), :celebrity, :albumName, :price, :image, :createdAt, :updatedAt)", toParamMap(album));
         return album;
     }
 

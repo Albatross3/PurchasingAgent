@@ -20,9 +20,9 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public Album createAlbum(Celebrity celebrity, String albumName, int price) {
+    public Album createAlbum(Celebrity celebrity, String albumName, int price, String image) {
         LocalDateTime createdTime = LocalDateTime.now();
-        Album album = new Album(UUID.randomUUID(), celebrity, albumName, price, createdTime, createdTime);
+        Album album = new Album(UUID.randomUUID(), celebrity, albumName, price, image, createdTime, createdTime);
         return albumRepository.insert(album);
     }
 
@@ -34,5 +34,10 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public List<Album> findAllAlbums() {
         return albumRepository.findAll();
+    }
+
+    @Override
+    public void deleteByAlbumId(UUID albumId) {
+        albumRepository.deleteById(albumId);
     }
 }
