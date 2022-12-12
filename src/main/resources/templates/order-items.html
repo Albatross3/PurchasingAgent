@@ -47,5 +47,14 @@
     </tr>
     </tbody>
 </table>
+<h3 id="total"></h3>
+<script th:inline="javascript">
+    let items = [[${items}]];
+    let totalPrice = 0;
+    for (let i = 0; i < items.length; i++) {
+        totalPrice += items[i].price * items[i].quantity;
+    }
+    document.getElementById("total").innerText = "총 주문금액 : " + totalPrice;
+</script>
 </body>
 </html>
