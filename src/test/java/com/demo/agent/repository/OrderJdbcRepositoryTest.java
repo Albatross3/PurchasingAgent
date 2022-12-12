@@ -31,8 +31,8 @@ class OrderJdbcRepositoryTest {
     @BeforeEach
     void setup() {
         LocalDateTime now = LocalDateTime.now();
-        album1 = new Album(UUID.randomUUID(), Celebrity.ITZY, "IT'z ICY", 15000, now, now);
-        album2 = new Album(UUID.randomUUID(), Celebrity.BLACKPINK, "BORN PINK", 14000, now.plusDays(1), now.plusDays(1));
+        album1 = new Album(UUID.randomUUID(), Celebrity.ITZY, "IT'z ICY", 15000, "image",now, now);
+        album2 = new Album(UUID.randomUUID(), Celebrity.BLACKPINK, "BORN PINK", 14000, "image",now.plusDays(1), now.plusDays(1));
         albumRepository.insert(album1);
         albumRepository.insert(album2);
     }
