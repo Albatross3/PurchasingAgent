@@ -1,4 +1,4 @@
-package com.demo.agent.controller;
+package com.demo.agent.controller.manager;
 
 import com.demo.agent.domain.Order;
 import com.demo.agent.domain.OrderItem;

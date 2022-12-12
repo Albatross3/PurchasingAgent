@@ -21,7 +21,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order createOrder(String phoneNumber, String address, List<OrderItem> orderItems) {
         LocalDateTime createdTime = LocalDateTime.now();
-        Order order = new Order(UUID.randomUUID(), phoneNumber, address, orderItems, OrderStatus.ACCEPTED, createdTime, createdTime);
+        Order order = new Order(UUID.randomUUID(), phoneNumber, address,
+                orderItems, OrderStatus.ACCEPTED, createdTime, createdTime);
         orderRepository.insert(order);
         return order;
     }
