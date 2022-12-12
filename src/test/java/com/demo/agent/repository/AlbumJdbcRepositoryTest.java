@@ -27,7 +27,7 @@ class AlbumJdbcRepositoryTest {
     @DisplayName("앨범이 정상적으로 저장된다")
     void insert() {
         // given
-        Album album = new Album(UUID.randomUUID(), Celebrity.ITZY, "IT'z ICY", 15000, LocalDateTime.now(), LocalDateTime.now());
+        Album album = new Album(UUID.randomUUID(), Celebrity.ITZY, "IT'z ICY", 15000, "image",LocalDateTime.now(), LocalDateTime.now());
         albumRepository.insert(album);
 
         // when
@@ -43,7 +43,7 @@ class AlbumJdbcRepositoryTest {
     @DisplayName("앨범이 정상적으로 삭제된다")
     void deleteById() {
         // given
-        Album album = new Album(UUID.randomUUID(), Celebrity.ITZY, "IT'z ICY", 15000, LocalDateTime.now(), LocalDateTime.now());
+        Album album = new Album(UUID.randomUUID(), Celebrity.ITZY, "IT'z ICY", 15000, "image",LocalDateTime.now(), LocalDateTime.now());
         albumRepository.insert(album);
 
         // when
